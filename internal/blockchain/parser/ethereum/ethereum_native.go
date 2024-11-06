@@ -315,7 +315,7 @@ func (v *EthereumQuantity) UnmarshalJSON(input []byte) error {
 		return xerrors.Errorf("failed to unmarshal EthereumQuantity into string: %w", err)
 	}
 
-	if s == "" {
+	if s == "" || s == "0x0000000000000000" {
 		*v = 0
 		return nil
 	}
