@@ -14,6 +14,7 @@ enum Blockchain {
     BLOCKCHAIN_BITCOINCASH = 18;
     BLOCKCHAIN_LITECOIN = 19;
     BLOCKCHAIN_DOGECOIN = 26;
+    BLOCKCHAIN_TRON = 30;
     BLOCKCHAIN_BSC = 31;
     BLOCKCHAIN_AVACCHAIN = 32;
     BLOCKCHAIN_POLYGON = 35;
@@ -22,7 +23,6 @@ enum Blockchain {
     BLOCKCHAIN_APTOS = 47;   // L1 network using the Move language (originally created for Libra/Diem)
     BLOCKCHAIN_FANTOM = 51;
     BLOCKCHAIN_BASE = 56; // Coinbase L2
-    BLOCKCHAIN_TRON = 57;
 }
 
 // Network defines an enumeration of supported networks.
@@ -44,6 +44,9 @@ enum Network {
 
     NETWORK_LITECOIN_MAINNET = 39;
     NETWORK_LITECOIN_TESTNET = 40;
+
+    NETWORK_TRON_MAINNET = 64;
+    NETWORK_TRON_TESTNET = 65;
 
     NETWORK_ETHEREUM_GOERLI = 66;
 
@@ -75,7 +78,4 @@ enum Network {
     NETWORK_BASE_GOERLI = 125; // Coinbase L2 running on Ethereum Goerli
 
     NETWORK_ETHEREUM_HOLESKY = 136;
-
-    NETWORK_TRON_MAINNET = 137;
-    NETWORK_TRON_TESTNET = 138;
 }
