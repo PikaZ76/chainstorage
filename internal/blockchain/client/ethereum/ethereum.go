@@ -755,6 +755,34 @@ func (c *EthereumClient) getBlockTransactionReceipts(ctx context.Context, block 
 	return c.extractResultsFromResponses(responses), nil
 }
 
+func (c *EthereumClient) getBlockTracesTron(ctx context.Context, block *ethereum.EthereumBlockLit) ([][]byte, error) {
+	number := block.Number.Value()
+	params := jsonrpc.Params{
+		number,
+	}
+	method := ethTraceBlockByHashMethod
+	response, err := c.client.Call(ctx, method, params)
+	if err != nil {
+		c.metrics.traceBlockServerErrorCounter.Inc(1)
+		hash := block.Hash.Value()
+		return nil, xerrors.Errorf("failed to call %s (number=%v, hash=%v): %w", method.Name, number, hash, err)
+	}
+
+	var tmpResults []json.RawMessage
+	if err := json.Unmarshal(response.Result, &tmpResults); err != nil {
+		return nil, xerrors.Errorf("failed to unmarshal batch results: %w", err)
+	}
+
+	results := make([][]byte, len(tmpResults))
+	for i, trace := range tmpResults {
+		results[i] = trace
+	}
+
+	c.metrics.traceBlockSuccessCounter.Inc(1)
+	return results, nil
+
+}
+
 func (c *EthereumClient) getBlockTraces(ctx context.Context, tag uint32, block *ethereum.EthereumBlockLit) ([][]byte, error) {
 	nodeType := c.nodeType
 	traceType := c.traceType
@@ -774,6 +802,9 @@ func (c *EthereumClient) getBlockTraces(ctx context.Context, tag uint32, block *
 	hash := block.Hash.Value()
 
 	if traceType.ParityTraceEnabled() || c.isArbitrumParityTrace(block) {
+		if c.config.Blockchain() == common.Blockchain_BLOCKCHAIN_TRON {
+			return c.getBlockTracesTron(ctx, block)
+		}
 		number := block.Number.Value()
 		params := jsonrpc.Params{
 			hexutil.EncodeUint64(number),

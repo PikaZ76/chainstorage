@@ -12,13 +12,13 @@ const (
 	EthereumNodeType_ARCHIVAL
 	EthereumNodeType_FULL
 	EthereumNodeType_ALCHEMY_POLYGON
-	EthereumNodeType_ALCHEMY_TRON
 )
 
 func (t EthereumNodeType) TracesEnabled() bool {
-	return (t == EthereumNodeType_ARCHIVAL || t == EthereumNodeType_ALCHEMY_POLYGON) && t != EthereumNodeType_ALCHEMY_TRON
+	return t == EthereumNodeType_ARCHIVAL || t == EthereumNodeType_ALCHEMY_POLYGON
 }
 
 func (t EthereumNodeType) ReceiptsEnabled() bool {
-	return t == EthereumNodeType_ARCHIVAL || t == EthereumNodeType_ALCHEMY_POLYGON || t == EthereumNodeType_ALCHEMY_TRON
+	return t == EthereumNodeType_ARCHIVAL || t == EthereumNodeType_ALCHEMY_POLYGON
 }
+

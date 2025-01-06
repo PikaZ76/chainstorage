@@ -557,8 +557,14 @@ func (p *ethereumNativeParserImpl) ParseBlock(ctx context.Context, rawBlock *api
 
 	transactionToFlattenedTracesMap := make(map[string][]*api.EthereumTransactionFlattenedTrace, 0)
 	if isParityTrace {
-		if err := p.parseTransactionFlattenedParityTraces(blobdata, transactionToFlattenedTracesMap); err != nil {
-			return nil, xerrors.Errorf("failed to parse transaction parity traces: %w", err)
+		if p.config.Blockchain() == common.Blockchain_BLOCKCHAIN_TRON {
+			if err := convertTxInfoToFlattenedTraces(blobdata, header, transactionToFlattenedTracesMap); err != nil {
+				return nil, xerrors.Errorf("failed to parse transaction parity traces: %w", err)
+			}
+		} else {
+			if err := p.parseTransactionFlattenedParityTraces(blobdata, transactionToFlattenedTracesMap); err != nil {
+				return nil, xerrors.Errorf("failed to parse transaction parity traces: %w", err)
+			}
 		}
 	}
 
