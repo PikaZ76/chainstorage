@@ -81,21 +81,21 @@ func (s *tronParserTestSuite) TestParseTronBlock() {
 	}
 
 	expectedHeader := &api.EthereumHeader{
-		Hash:       "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
-		ParentHash: "0x0000000004034f5b43c5934257b3d1f1a313bba4af0a4dd2f778fda9e641b615",
+		Hash:       "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+		ParentHash: "0000000004034f5b43c5934257b3d1f1a313bba4af0a4dd2f778fda9e641b615",
 		Number:     0x4034F5C,
 		Timestamp:  &timestamppb.Timestamp{Seconds: 1732627338},
 		Transactions: []string{
-			"0xd581afa9158fbed69fb10d6a2245ad45d912a3da03ff24d59f3d2f6df6fd9529",
-			"0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			"d581afa9158fbed69fb10d6a2245ad45d912a3da03ff24d59f3d2f6df6fd9529",
+			"e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 		},
 		Nonce:            "0x0000000000000000",
 		Sha3Uncles:       "0x0000000000000000000000000000000000000000000000000000000000000000",
 		LogsBloom:        "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-		TransactionsRoot: "0xd270690faa58558c2b03ae600334f71f9d5a0ad42d7313852fb3742e8576eec9",
+		TransactionsRoot: "d270690faa58558c2b03ae600334f71f9d5a0ad42d7313852fb3742e8576eec9",
 		StateRoot:        "0x",
 		ReceiptsRoot:     "0x0000000000000000000000000000000000000000000000000000000000000000",
-		Miner:            "0x8b0359acac03bac62cbf89c4b787cb10b3c3f513",
+		Miner:            "TNeEwWHXLLUgEtfzTnYN8wtVenGxuMzZCE",
 		TotalDifficulty:  "0",
 		ExtraData:        "0x",
 		Size:             0x1a366,
@@ -110,114 +110,114 @@ func (s *tronParserTestSuite) TestParseTronBlock() {
 	expectedFlattenedTraces := []*api.EthereumTransactionFlattenedTrace{
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
 			Value:            "200",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x499bdbdfaae021dd510c70b433bc48d88d8ca6e0b7aee13ce6d726114e365aaf",
+			TraceId:          "499bdbdfaae021dd510c70b433bc48d88d8ca6e0b7aee13ce6d726114e365aaf",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x41e8667633c747066c70672c58207cc745a9860527",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TXA2WjFc5f86deJcZZCdbdpkpUTKTA3VDM",
 			Value:            "0",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x997225b56440a9bd172f05f44a663830b72093a12502551cda99b0bc7c60cbc1",
+			TraceId:          "997225b56440a9bd172f05f44a663830b72093a12502551cda99b0bc7c60cbc1",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x41e8667633c747066c70672c58207cc745a9860527",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TXA2WjFc5f86deJcZZCdbdpkpUTKTA3VDM",
 			Value:            "0",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x7ac8dd16dede5c512330f5033c8fd6f5390d742aa51b805f805098109eb54fe9",
+			TraceId:          "7ac8dd16dede5c512330f5033c8fd6f5390d742aa51b805f805098109eb54fe9",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x41c64e69acde1c7b16c2a3efcdbbdaa96c3644c2b3",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5",
 			Value:            "0",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0xcf6f699d9bdae8aa25fae310a06bb60a29a7812548cf3c1d83c737fd1a22c0ee",
+			TraceId:          "cf6f699d9bdae8aa25fae310a06bb60a29a7812548cf3c1d83c737fd1a22c0ee",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c64e69acde1c7b16c2a3efcdbbdaa96c3644c2b3",
-			To:               "0x41c64e69acde1c7b16c2a3efcdbbdaa96c3644c2b3",
+			From:             "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5",
+			To:               "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5",
 			Value:            "0",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x95787b9a6558c7b6b624d0c1bece9723a7f4c3d414010b6ac105ae5f5aebffbc",
+			TraceId:          "95787b9a6558c7b6b624d0c1bece9723a7f4c3d414010b6ac105ae5f5aebffbc",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c64e69acde1c7b16c2a3efcdbbdaa96c3644c2b3",
-			To:               "0x414d12f87c18a914dddbc2b27f378ad126a79b76b6",
+			From:             "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5",
+			To:               "TGzjkw66CtL49eKiQFDwJDuXG9HSQd69p2",
 			Value:            "822996311610",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x14526162e31d969ef0dca9b902d51ecc0ffab87dc936dce62022f368119043af",
+			TraceId:          "14526162e31d969ef0dca9b902d51ecc0ffab87dc936dce62022f368119043af",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x41e8667633c747066c70672c58207cc745a9860527",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TXA2WjFc5f86deJcZZCdbdpkpUTKTA3VDM",
 			Value:            "0",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x8e088220a26ca8d794786e78096e71259cf8744cccdc4f07a8129aa8ee29bb98",
+			TraceId:          "8e088220a26ca8d794786e78096e71259cf8744cccdc4f07a8129aa8ee29bb98",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 		{
 			Type:             "CALL",
-			From:             "0x41c60a6f5c81431c97ed01b61698b6853557f3afd4",
-			To:               "0x4189ae01b878dffc8088222adf1fb08ebadfeea53a",
+			From:             "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd",
+			To:               "TNXC2YCSxhdxsVqhqu3gYZYme6n4i6T1C1",
 			Value:            "1424255258",
 			TraceType:        "CALL",
 			CallType:         "CALL",
-			TraceId:          "0x83b1d41ba953aab4da6e474147f647599ea53bb3213306897127b57e85ddd1ca",
+			TraceId:          "83b1d41ba953aab4da6e474147f647599ea53bb3213306897127b57e85ddd1ca",
 			Status:           1,
-			BlockHash:        "0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
+			BlockHash:        "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87",
 			BlockNumber:      0x4034F5C,
-			TransactionHash:  "0xe14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
+			TransactionHash:  "e14935e6144007163609bb49292897ba81bf7ee93bf28ba4cc5ebd0d6b95f4b9",
 			TransactionIndex: 1,
 		},
 	}
@@ -229,10 +229,11 @@ func (s *tronParserTestSuite) TestParseTronBlock() {
 	actualBlock := nativeBlock.GetEthereum()
 	require.NotNil(actualBlock)
 	require.Equal(expectedHeader, actualBlock.Header)
-
 	require.Equal(2, len(actualBlock.Transactions))
 	tx := actualBlock.Transactions[1]
 	require.Equal(expectedFlattenedTraces, tx.FlattenedTraces)
+	// TODO: add test for actualBlock.Transactions
+
 }
 
 func (s *tronParserTestSuite) fixtureParsingHelper(filePath string) ([][]byte, error) {
@@ -247,4 +248,58 @@ func (s *tronParserTestSuite) fixtureParsingHelper(filePath string) ([][]byte, e
 		items[i] = item
 	}
 	return items, err
+}
+
+func (s *tronParserTestSuite) TestToTronHash() {
+	require := testutil.Require(s.T())
+
+	// 测试各种情况
+	testCases := []struct {
+		input    string
+		expected string
+		comment  string
+	}{
+		{"0x0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87", "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87", "with 0x prefix"},
+		{"0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87", "0000000004034f5cd8946001c721db6457608ad887b3734c825d55826c3c3c87", "without 0x prefix"},
+		{"0xABCDEF1234567890", "ABCDEF1234567890", "uppercase hex"},
+		{"", "", "empth string"},
+		{"0x", "", "only 0x prefix"},
+	}
+
+	for _, tc := range testCases {
+		result := toTronHash(tc.input)
+		require.Equal(tc.expected, result, tc.comment)
+	}
+}
+
+func (s *tronParserTestSuite) TestHexToTronAddress() {
+	require := testutil.Require(s.T())
+	// 测试各种情况
+	testCases := []struct {
+		input    string
+		expected string
+		comment  string
+	}{
+		{"0x8b0359acac03bac62cbf89c4b787cb10b3c3f513", "TNeEwWHXLLUgEtfzTnYN8wtVenGxuMzZCE", "with 0x prefix"},
+		{"0xc60a6f5c81431c97ed01b61698b6853557f3afd4", "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd", "with 0x prefix"},
+		{"0x4d12f87c18a914dddbc2b27f378ad126a79b76b6", "TGzjkw66CtL49eKiQFDwJDuXG9HSQd69p2", "with 0x prefix"},
+		{"0xe8667633c747066c70672c58207cc745a9860527", "TXA2WjFc5f86deJcZZCdbdpkpUTKTA3VDM", "with 0x prefix"},
+		{"0x89ae01b878dffc8088222adf1fb08ebadfeea53a", "TNXC2YCSxhdxsVqhqu3gYZYme6n4i6T1C1", "with 0x prefix"},
+
+		{"418b0359acac03bac62cbf89c4b787cb10b3c3f513", "TNeEwWHXLLUgEtfzTnYN8wtVenGxuMzZCE", "without 0x but have 41 prefix"},
+		{"41c60a6f5c81431c97ed01b61698b6853557f3afd4", "TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd", "without 0x but have 41 prefix"},
+		{"414d12f87c18a914dddbc2b27f378ad126a79b76b6", "TGzjkw66CtL49eKiQFDwJDuXG9HSQd69p2", "without 0x but have 41 prefix"},
+		{"41e8667633c747066c70672c58207cc745a9860527", "TXA2WjFc5f86deJcZZCdbdpkpUTKTA3VDM", "without 0x but have 41 prefix"},
+		{"4189ae01b878dffc8088222adf1fb08ebadfeea53a", "TNXC2YCSxhdxsVqhqu3gYZYme6n4i6T1C1", "without 0x but have 41 prefix"},
+
+		{"c64e69acde1c7b16c2a3efcdbbdaa96c3644c2b3", "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5", "without 0x and 41 prefix"},
+		{"a614f803b6fd780986a42c78ec9c7f77e6ded13c", "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t", "without 0x and 41 prefix"},
+		
+		{"", "", "empty string"},
+	}
+
+	for _, tc := range testCases {
+		result := hexToTronAddress(tc.input)
+		require.Equal(tc.expected, result, tc.comment)
+	}
 }

@@ -9,10 +9,11 @@ import (
 
 	"golang.org/x/xerrors"
 
+	"github.com/mr-tron/base58"
+
 	"github.com/coinbase/chainstorage/internal/blockchain/parser/ethereum/types"
 	"github.com/coinbase/chainstorage/internal/blockchain/parser/internal"
 	api "github.com/coinbase/chainstorage/protos/coinbase/chainstorage"
-	"github.com/mr-tron/base58"
 )
 
 func NewTronNativeParser(params internal.ParserParams, opts ...internal.ParserFactoryOption) (internal.NativeParser, error) {
@@ -99,11 +100,19 @@ func toTronHash(hexHash string) string {
 }
 
 func hexToTronAddress(hexAddress string) string {
+	if hexAddress == "" {
+		return ""
+	}
 	if strings.HasPrefix(hexAddress, "0x") {
 		hexAddress = "41" + hexAddress[2:]
+	} else if !strings.HasPrefix(hexAddress, "41") {
+		hexAddress = "41" + hexAddress
 	}
-	// 
-	rawBytes, _ := hex.DecodeString(hexAddress)
+	rawBytes, err := hex.DecodeString(hexAddress)
+	if err != nil {
+		return hexAddress
+	}
+
 	// Compute double SHA-256 checksum
 	hash1 := sha256.Sum256(rawBytes)
 	hash2 := sha256.Sum256(hash1[:])
