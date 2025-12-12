@@ -328,3 +328,11 @@ func IsConsensusClusterFailure(err error) bool {
 func IsConsensusValidationFailure(err error) bool {
 	return strings.Contains(err.Error(), a.ErrTypeConsensusValidationFailure)
 }
+
+func IsHeartbeatTimeout(err error) bool {
+	var timeoutError *temporal.TimeoutError
+	if errors.As(err, &timeoutError) {
+		return timeoutError.TimeoutType() == enums.TIMEOUT_TYPE_HEARTBEAT
+	}
+	return strings.Contains(err.Error(), "Heartbeat timeout")
+}

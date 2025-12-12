@@ -204,7 +204,7 @@ func (w *Poller) execute(ctx workflow.Context, request *PollerRequest) error {
 			}
 			sessionCtx, err = workflow.CreateSession(ctx, so)
 			if err != nil {
-				if IsErrSessionFailed(ctx, err) || IsScheduleToStartTimeout(err) {
+				if IsErrSessionFailed(ctx, err) || IsScheduleToStartTimeout(err) || IsHeartbeatTimeout(err){
 					request.RetryableErrorCount++
 					errMetricName := w.getRetryableErrorMetricName(ctx, err)
 					metrics.Counter(errMetricName).Inc(1)
